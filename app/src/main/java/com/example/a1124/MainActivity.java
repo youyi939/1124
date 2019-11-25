@@ -15,8 +15,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
-
-
+    private NewsFragment newsFragment = new NewsFragment();
+    private HomeFragment homeFragment = new HomeFragment();
+    private MsgFragment msgFragment = new MsgFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,19 +26,20 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.nav_view);
         replaceFragment(new NewsFragment());
 
+
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                String title = item.getTitle().toString();
+
                 switch (item.getItemId()) {
                     case R.id.navigation_home:
-                        replaceFragment(new NewsFragment());
+                        replaceFragment(newsFragment);
                         break;
                     case R.id.navigation_dashboard:
-                        replaceFragment(new HomeFragment());
+                        replaceFragment(homeFragment);
                         break;
                     case R.id.navigation_notifications:
-                        replaceFragment(new MsgFragment());
+                        replaceFragment(msgFragment);
                         break;
 
                         default:

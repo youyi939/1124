@@ -6,6 +6,12 @@ public class News {
     private String image;
 
 
+    public News(String tittle, String message, String image) {
+        this.tittle = tittle;
+        this.message = message;
+        this.image = image;
+    }
+
     public String getTittle() {
         return tittle;
     }
