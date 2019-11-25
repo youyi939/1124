@@ -6,8 +6,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
+import android.webkit.JavascriptInterface;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -17,14 +20,13 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
     private NewsFragment newsFragment = new NewsFragment();
     private HomeFragment homeFragment = new HomeFragment();
-    private MsgFragment msgFragment = new MsgFragment();
-
+    public MsgFragment msgFragment = new MsgFragment();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         bottomNavigationView = findViewById(R.id.nav_view);
-        replaceFragment(new NewsFragment());
+        replaceFragment( newsFragment);
 
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -34,12 +36,13 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.navigation_home:
                         replaceFragment(newsFragment);
+
                         break;
                     case R.id.navigation_dashboard:
                         replaceFragment(homeFragment);
                         break;
                     case R.id.navigation_notifications:
-                        replaceFragment(msgFragment);
+//                        replaceFragment(msgFragment);
                         break;
 
                         default:
@@ -52,13 +55,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-    private void replaceFragment(Fragment fragment){
+    protected void replaceFragment(Fragment fragment){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.frameLayout,fragment);
         transaction.commit();
     }
+
 
 
 }
