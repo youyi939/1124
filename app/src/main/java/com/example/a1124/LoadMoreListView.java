@@ -31,8 +31,8 @@ public class LoadMoreListView extends ListView implements AbsListView.OnScrollLi
     }
 
     private void init(Context context){
-        this.mContext=context;
-        mFootView= LayoutInflater.from(context).inflate(R.layout.footer_view,null);
+        this.mContext = context;
+        mFootView = LayoutInflater.from(context).inflate(R.layout.footer_view,null);
         setOnScrollListener(this);
     }
 
